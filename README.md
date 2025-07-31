@@ -13,6 +13,13 @@
 
 **TOTAL TIME:** 09:42:00
 
+# Planned but Not Implemented
+
+- Sound effects and feedback;
+- Unit tests for the reusable components;
+- Tween-based UI animations;
+- Improved handling for different screen resolutions;
+
 # Credits
 
 https://opengameart.org/content/gold-treasure-icons-16x16
