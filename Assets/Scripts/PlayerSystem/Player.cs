@@ -18,12 +18,8 @@ namespace PlayerSystem
         private void Awake()
         {
             this.ValidateParameters();
-        }
-        private void Start()
-        {
             this.Initialize();
         }
-
         #endregion
         
         #region Private Methods

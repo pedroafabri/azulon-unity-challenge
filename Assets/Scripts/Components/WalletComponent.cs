@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 using GameExceptions;
+using UnityEngine.Events;
 
 namespace Components
 {
     public class WalletComponent : MonoBehaviour
     {
+        public UnityEvent<int> onBalanceChanged;
+        
         /// <summary>
         /// The current Balance of this wallet
         /// </summary>
@@ -24,6 +27,7 @@ namespace Components
                 throw new ArgumentException("Tried to deposit a negative amount.");
             }
             Balance += amount;
+            onBalanceChanged?.Invoke(Balance);
             return Balance;
         }
 
@@ -46,6 +50,7 @@ namespace Components
                 throw new NotEnoughWalletBalanceException($"Tried to withdraw {amount} but wallet only has {Balance}.");
             }
             Balance -= amount;
+            onBalanceChanged?.Invoke(Balance);
             return Balance;
         }
 
