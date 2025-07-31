@@ -24,7 +24,7 @@ namespace UI
         
         #region MonoBehaviour
 
-        private void OnEnable()
+        private void Start()
         {
             Initialize();
             DrawItemsForSale();
