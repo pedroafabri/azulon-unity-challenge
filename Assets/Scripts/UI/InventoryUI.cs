@@ -20,7 +20,9 @@ namespace UI
         private void Start()
         {
             DrawInventory();
+            UIManager.Instance.onUIChanged.AddListener(OnGuiChange);
         }
+        
 
         #endregion
 
@@ -43,11 +45,31 @@ namespace UI
                 DrawInventoryItem(item);
             }
         }
+
+        private void OnGuiChange(UIType uiType)
+        {
+            if (uiType == UIType.Inventory)
+            {
+                DrawInventory();
+            }
+            else
+            {
+                ResetInventory();
+            }
+        }
         
         private void DrawInventoryItem(InventoryItem item)
         {
             var instance = Instantiate(inventoryItemPrefab, inventoryContent);
             instance.GetComponent<InventoryListItem>()?.Setup(this, item);
+        }
+
+        private void ResetInventory()
+        {
+            for (int i = 0; i < inventoryContent.childCount; i++)
+            {
+                Destroy(inventoryContent.GetChild(i).gameObject);
+            }
         }
 
         #endregion
