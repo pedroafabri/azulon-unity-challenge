@@ -12,7 +12,7 @@ namespace Components
     {
         [SerializeField] private List<InventoryItem> items = new();
 
-        public IReadOnlyList<InventoryItem> Items() => items;
+        public IReadOnlyList<InventoryItem> Items => items;
         
             /// <summary>
             /// Adds a specified quantity of the given item to the inventory. 

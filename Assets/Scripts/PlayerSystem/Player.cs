@@ -1,12 +1,15 @@
 using UnityEngine;
 using Components;
 using Core;
+using Data;
 
 namespace PlayerSystem
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField, Header("Demo Config")] private int initialBalance = 100;
+        [Header("Demo Config")]
+        [SerializeField] private int initialBalance = 100;
+        [SerializeField] private Item initialItem;
         [SerializeField, Header("Player Components")] private WalletComponent wallet;
         [SerializeField] private InventoryComponent inventory;
         
@@ -39,6 +42,7 @@ namespace PlayerSystem
         {
             SceneContext.Instance.RegisterPlayer(this);
             wallet.Deposit(initialBalance);
+            inventory.AddItem(initialItem);
         }
         #endregion
     }
